@@ -1,42 +1,40 @@
 package com.example.aimagency.controller;
 
 import com.example.aimagency.model.AltServis;
+import com.example.aimagency.repository.AltServisRepository;
 import com.example.aimagency.service.AltServisService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/altservisler")
-@CrossOrigin(origins = "http://localhost:3000") // React'e izin ver
+@RequestMapping("/api/alt-servisler")
+@CrossOrigin(origins = "*")
 public class AltServisController {
 
-    private final AltServisService altServisService;
+    @Autowired
+    private AltServisRepository repository;
 
-    public AltServisController(AltServisService altServisService) {
-        this.altServisService = altServisService;
-    }
-
-    // 🔹 Tüm alt servisleri listele
     @GetMapping
     public List<AltServis> getAll() {
-        return altServisService.getAll();
+        return repository.findAll();
     }
 
-    // 🔹 Yeni alt servis ekle
     @PostMapping
-    public AltServis create(@RequestBody AltServis altServis) {
-        return altServisService.create(altServis);
+    public AltServis addAltServis(@RequestBody AltServis altServis) {
+        return repository.save(altServis);
     }
 
-    // 🔹 Alt servisi güncelle
     @PutMapping("/{id}")
-    public AltServis update(@PathVariable Long id, @RequestBody AltServis updatedAltServis) {
-        return altServisService.update(id, updatedAltServis);
+    public AltServis updateAltServis(@PathVariable Long id, @RequestBody AltServis altServis) {
+        altServis.setId(id);
+        return repository.save(altServis);
     }
 
-    // 🔹 Alt servisi sil
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        altServisService.delete(id);
+    public void deleteAltServis(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }

@@ -19,8 +19,21 @@ public class ServisService {
         return repository.findAll();
     }
 
-    public Servis save(Servis s) {
-        return repository.save(s);
+    public Servis save(Servis servis) {
+        return repository.save(servis);
+    }
+
+    public Servis update(Long id, Servis updated) {
+        return repository.findById(id)
+                .map(servis -> {
+                    servis.setBaslik(updated.getBaslik());
+                    servis.setOzet(updated.getOzet());
+                    servis.setDetay(updated.getDetay());
+                    servis.setResimUrl(updated.getResimUrl());
+                    servis.setAktif(updated.getAktif());
+                    return repository.save(servis);
+                })
+                .orElse(null);
     }
 
     public void delete(Long id) {

@@ -3,39 +3,38 @@ package com.example.aimagency.service;
 import com.example.aimagency.model.AltServis;
 import com.example.aimagency.repository.AltServisRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class AltServisService {
 
-    private final AltServisRepository altServisRepository;
+    private final AltServisRepository repository;
 
-    public AltServisService(AltServisRepository altServisRepository) {
-        this.altServisRepository = altServisRepository;
+    public AltServisService(AltServisRepository repository) {
+        this.repository = repository;
     }
 
-    // Tüm alt servisleri listele
     public List<AltServis> getAll() {
-        return altServisRepository.findAll();
+        return repository.findAll();
     }
 
-    // Yeni alt servis ekle
-    public AltServis create(AltServis altServis) {
-        return altServisRepository.save(altServis);
+    public AltServis save(AltServis altServis) {
+        return repository.save(altServis);
     }
 
-    // Alt servisi güncelle
-    public AltServis update(Long id, AltServis updatedAltServis) {
-        return altServisRepository.findById(id).map(existing -> {
-            existing.setBaslik(updatedAltServis.getBaslik());
-            existing.setAciklama(updatedAltServis.getAciklama());
-            existing.setIkonUrl(updatedAltServis.getIkonUrl());
-            return altServisRepository.save(existing);
-        }).orElseThrow(() -> new RuntimeException("Alt servis bulunamadı! ID: " + id));
+    public AltServis update(Long id, AltServis updated) {
+        return repository.findById(id)
+                .map(altServis -> {
+                    altServis.setBaslik(updated.getBaslik());
+                    altServis.setAciklama(updated.getAciklama());
+                    altServis.setAktif(updated.getAktif());
+                    return repository.save(altServis);
+                })
+                .orElse(null);
     }
 
-    // Alt servisi sil
     public void delete(Long id) {
-        altServisRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }
