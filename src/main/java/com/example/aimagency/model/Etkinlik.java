@@ -12,10 +12,17 @@ public class Etkinlik {
     private Long id;
 
     private String baslik;
-    private String aciklama;
+
+    @Column(length = 500)
+    private String aciklama; // kısa açıklama — örn: ana sayfada görünen
+
     private String resimUrl;
-    private String detay;
+
+
+    private String detay; // uzun metin — detay sayfasında gösterilecek
+
     private Boolean aktif = true;
+
     private LocalDateTime olusturmaTarihi = LocalDateTime.now();
 
     // Getter ve Setter'lar

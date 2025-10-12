@@ -3,7 +3,6 @@ package com.example.aimagency.controller;
 import com.example.aimagency.model.Etkinlik;
 import com.example.aimagency.repository.EtkinlikRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,25 +17,32 @@ public class EtkinlikController {
         this.repository = repository;
     }
 
-    // 🔹 TÜM ETKİNLİKLERİ GETİR
+    // 🔹 1. TÜM ETKİNLİKLERİ GETİR
     @GetMapping
     public List<Etkinlik> getAll() {
         return repository.findAll();
     }
 
-    // 🔹 YENİ ETKİNLİK EKLE
+    // 🔹 2. ID'ye göre TEK ETKİNLİK GETİR
+    @GetMapping("/{id}")
+    public Etkinlik getById(@PathVariable Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Etkinlik bulunamadı: " + id));
+    }
+
+    // 🔹 3. YENİ ETKİNLİK EKLE
     @PostMapping
     public Etkinlik add(@RequestBody Etkinlik etkinlik) {
         return repository.save(etkinlik);
     }
 
-    // 🔹 ETKİNLİK SİL
+    // 🔹 4. ETKİNLİK SİL
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         repository.deleteById(id);
     }
 
-    // 🔹 ETKİNLİK GÜNCELLE
+    // 🔹 5. ETKİNLİK GÜNCELLE
     @PutMapping("/{id}")
     public Etkinlik update(@PathVariable Long id, @RequestBody Etkinlik yeniEtkinlik) {
         Optional<Etkinlik> mevcutOpt = repository.findById(id);
@@ -47,17 +53,18 @@ public class EtkinlikController {
 
         Etkinlik mevcut = mevcutOpt.get();
 
-        // 🧩 Güncellenebilir alanlar:
-        mevcut.setBaslik(yeniEtkinlik.getBaslik());
-        mevcut.setAciklama(yeniEtkinlik.getAciklama());
-        mevcut.setDetay(yeniEtkinlik.getDetay());
+        // 🧩 Boş gelmeyen alanları güncelle
+        if (yeniEtkinlik.getBaslik() != null)
+            mevcut.setBaslik(yeniEtkinlik.getBaslik());
 
-        // 🔹 Eğer frontend boş string gönderirse resmi siler
-        mevcut.setResimUrl(
-                (yeniEtkinlik.getResimUrl() == null || yeniEtkinlik.getResimUrl().isEmpty())
-                        ? null
-                        : yeniEtkinlik.getResimUrl()
-        );
+        if (yeniEtkinlik.getAciklama() != null)
+            mevcut.setAciklama(yeniEtkinlik.getAciklama());
+
+        if (yeniEtkinlik.getDetay() != null)
+            mevcut.setDetay(yeniEtkinlik.getDetay());
+
+        if (yeniEtkinlik.getResimUrl() != null && !yeniEtkinlik.getResimUrl().isEmpty())
+            mevcut.setResimUrl(yeniEtkinlik.getResimUrl());
 
         mevcut.setAktif(yeniEtkinlik.getAktif());
 
