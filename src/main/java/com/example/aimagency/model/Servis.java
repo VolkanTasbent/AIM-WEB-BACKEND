@@ -2,6 +2,10 @@ package com.example.aimagency.model;
 
 import jakarta.persistence.*;
 
+
+
+import jakarta.persistence.*;
+
 @Entity
 @Table(name = "servisler")
 public class Servis {
@@ -11,9 +15,15 @@ public class Servis {
     private Long id;
 
     private String baslik;
+
     private String ozet;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String detay;
+
     private String resimUrl;
+
     private Boolean aktif = true;
 
     // Getter-Setter

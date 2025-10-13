@@ -18,22 +18,32 @@ public class HaberController {
         this.repository = repository;
     }
 
+    // 🔹 TÜM HABERLERİ GETİR
     @GetMapping
     public List<Haber> getAll() {
         return repository.findAll();
     }
 
+    // 🔹 ID'YE GÖRE TEK HABER GETİR
+    @GetMapping("/{id}")
+    public Haber getById(@PathVariable Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Haber bulunamadı: " + id));
+    }
+
+    // 🔹 YENİ HABER EKLE
     @PostMapping
     public Haber add(@RequestBody Haber haber) {
         return repository.save(haber);
     }
 
+    // 🔹 HABER SİL
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         repository.deleteById(id);
     }
 
-    // 🔹 GÜNCELLEME (PUT)
+    // 🔹 HABER GÜNCELLE
     @PutMapping("/{id}")
     public Haber update(@PathVariable Long id, @RequestBody Haber haber) {
         Optional<Haber> existingOpt = repository.findById(id);
@@ -43,7 +53,7 @@ public class HaberController {
 
         Haber existing = existingOpt.get();
         existing.setBaslik(haber.getBaslik());
-        existing.setIcerik(haber.getIcerik()); // 💡 "icerik" alanını doğrudan kullanıyoruz
+        existing.setIcerik(haber.getIcerik());
         existing.setDetay(haber.getDetay());
         existing.setResimUrl(haber.getResimUrl());
         existing.setAktif(haber.getAktif());

@@ -12,13 +12,21 @@ public class Haber {
     private Long id;
 
     private String baslik;
+
+    @Column(length = 500)
     private String icerik;
-    private String resimUrl;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String detay;
+
+    private String resimUrl;
+
     private Boolean aktif = true;
+
     private LocalDate tarih = LocalDate.now();
 
-    // Getter ve Setter'lar
+    // --- GETTER SETTER ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -28,11 +36,11 @@ public class Haber {
     public String getIcerik() { return icerik; }
     public void setIcerik(String icerik) { this.icerik = icerik; }
 
-    public String getResimUrl() { return resimUrl; }
-    public void setResimUrl(String resimUrl) { this.resimUrl = resimUrl; }
-
     public String getDetay() { return detay; }
     public void setDetay(String detay) { this.detay = detay; }
+
+    public String getResimUrl() { return resimUrl; }
+    public void setResimUrl(String resimUrl) { this.resimUrl = resimUrl; }
 
     public Boolean getAktif() { return aktif; }
     public void setAktif(Boolean aktif) { this.aktif = aktif; }

@@ -19,8 +19,9 @@ public class Etkinlik {
     private String resimUrl;
 
 
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String detay; // uzun metin — detay sayfasında gösterilecek
-
     private Boolean aktif = true;
 
     private LocalDateTime olusturmaTarihi = LocalDateTime.now();
