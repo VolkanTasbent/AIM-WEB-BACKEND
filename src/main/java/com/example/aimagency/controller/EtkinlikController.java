@@ -63,11 +63,21 @@ public class EtkinlikController {
         if (yeniEtkinlik.getDetay() != null)
             mevcut.setDetay(yeniEtkinlik.getDetay());
 
-        if (yeniEtkinlik.getResimUrl() != null && !yeniEtkinlik.getResimUrl().isEmpty())
-            mevcut.setResimUrl(yeniEtkinlik.getResimUrl());
+        // 🔹 RESİM GÜNCELLEME / SİLME
+        if (yeniEtkinlik.getResimUrl() != null) {
+            if (yeniEtkinlik.getResimUrl().isEmpty()) {
+                // frontend boş string gönderirse, resmi kaldır
+                mevcut.setResimUrl(null);
+            } else {
+                mevcut.setResimUrl(yeniEtkinlik.getResimUrl());
+            }
+        }
 
-        mevcut.setAktif(yeniEtkinlik.getAktif());
+        // 🔹 Aktif alanını güvenli şekilde güncelle (null kontrolü ile)
+        if (yeniEtkinlik.getAktif() != null)
+            mevcut.setAktif(yeniEtkinlik.getAktif());
 
         return repository.save(mevcut);
     }
+
 }
