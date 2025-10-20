@@ -3,8 +3,8 @@ package com.example.aimagency.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "crew")
-public class Crew {
+@Table(name = "esports")
+public class EsportsPlayer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,23 +14,31 @@ public class Crew {
     private String unvan;
 
     @Column(columnDefinition = "TEXT")
-    private String aciklama; // kısa açıklama
+    private String aciklama;
 
     @Column(columnDefinition = "TEXT")
-    private String detay; // detay açıklama
+    private String detay;
 
     @Column(columnDefinition = "TEXT")
-    private String resimUrl; // Cloudinary linki
+    private String takim;
 
-    private String diller; // örn: "🇹🇷 🇬🇧 🇩🇪"
+    @Column(columnDefinition = "TEXT")
+    private String basarilar;
+
     private String linkedin;
     private String instagram;
     private String youtube;
     private String tiktok;
+    private String resimUrl;
 
-    private Boolean aktif = true;
 
-    // ✅ Getter & Setter
+    @Column(columnDefinition = "TEXT")
+    private String achievementsBgUrl;
+
+    @Column(columnDefinition = "TEXT")
+    private String teamsBgUrl;
+
+    // 🔹 Getter-Setter'lar
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -46,11 +54,11 @@ public class Crew {
     public String getDetay() { return detay; }
     public void setDetay(String detay) { this.detay = detay; }
 
-    public String getResimUrl() { return resimUrl; }
-    public void setResimUrl(String resimUrl) { this.resimUrl = resimUrl; }
+    public String getTakim() { return takim; }
+    public void setTakim(String takim) { this.takim = takim; }
 
-    public String getDiller() { return diller; }
-    public void setDiller(String diller) { this.diller = diller; }
+    public String getBasarilar() { return basarilar; }
+    public void setBasarilar(String basarilar) { this.basarilar = basarilar; }
 
     public String getLinkedin() { return linkedin; }
     public void setLinkedin(String linkedin) { this.linkedin = linkedin; }
@@ -64,6 +72,13 @@ public class Crew {
     public String getTiktok() { return tiktok; }
     public void setTiktok(String tiktok) { this.tiktok = tiktok; }
 
-    public Boolean getAktif() { return aktif; }
-    public void setAktif(Boolean aktif) { this.aktif = aktif; }
+    public String getResimUrl() { return resimUrl; }
+    public void setResimUrl(String resimUrl) { this.resimUrl = resimUrl; }
+
+    public String getAchievementsBgUrl() { return achievementsBgUrl; }
+    public void setAchievementsBgUrl(String achievementsBgUrl) { this.achievementsBgUrl = achievementsBgUrl; }
+
+    public String getTeamsBgUrl() { return teamsBgUrl; }
+    public void setTeamsBgUrl(String teamsBgUrl) { this.teamsBgUrl = teamsBgUrl; }
+
 }
