@@ -44,6 +44,7 @@ public class EsportsPlayerService {
         existing.setResimUrl(updated.getResimUrl());
         existing.setAchievementsBgUrl(updated.getAchievementsBgUrl());
         existing.setTeamsBgUrl(updated.getTeamsBgUrl());
+        existing.setTeamLogos(updated.getTeamLogos());
 
         return repository.save(existing);
     }

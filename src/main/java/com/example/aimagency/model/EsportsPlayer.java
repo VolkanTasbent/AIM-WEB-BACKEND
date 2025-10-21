@@ -25,6 +25,9 @@ public class EsportsPlayer {
     @Column(columnDefinition = "TEXT")
     private String basarilar;
 
+
+
+
     private String linkedin;
     private String instagram;
     private String youtube;
@@ -37,6 +40,9 @@ public class EsportsPlayer {
 
     @Column(columnDefinition = "TEXT")
     private String teamsBgUrl;
+
+    @Column(columnDefinition = "TEXT")
+    private String teamLogos;
 
     // 🔹 Getter-Setter'lar
     public Long getId() { return id; }
@@ -81,4 +87,6 @@ public class EsportsPlayer {
     public String getTeamsBgUrl() { return teamsBgUrl; }
     public void setTeamsBgUrl(String teamsBgUrl) { this.teamsBgUrl = teamsBgUrl; }
 
+    public String getTeamLogos() { return teamLogos; }
+    public void setTeamLogos(String teamLogos) {this.teamLogos = teamLogos;}
 }
