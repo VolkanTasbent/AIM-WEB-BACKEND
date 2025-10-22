@@ -16,73 +16,56 @@ public class Influencer {
     @Column(columnDefinition = "TEXT")
     private String aciklama;
 
+    private String detay;
     private String resimUrl;
+
     private String youtubeTakipci;
-    private String tiktokTakipci;
+    private String twitterTakipci;
     private String instagramTakipci;
 
+    @Column(nullable = true)
+    private String youtube;
+
+    @Column(nullable = true)
+    private String twitter;
+
+    @Column(nullable = true)
+    private String instagram;
+
     // --- Getter & Setter ---
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getAdSoyad() { return adSoyad; }
+    public void setAdSoyad(String adSoyad) { this.adSoyad = adSoyad; }
 
-    public String getAdSoyad() {
-        return adSoyad;
-    }
+    public String getUnvan() { return unvan; }
+    public void setUnvan(String unvan) { this.unvan = unvan; }
 
-    public void setAdSoyad(String adSoyad) {
-        this.adSoyad = adSoyad;
-    }
+    public String getAciklama() { return aciklama; }
+    public void setAciklama(String aciklama) { this.aciklama = aciklama; }
 
-    public String getUnvan() {
-        return unvan;
-    }
+    public String getDetay() { return detay; }
+    public void setDetay(String detay) { this.detay = detay; }
 
-    public void setUnvan(String unvan) {
-        this.unvan = unvan;
-    }
+    public String getResimUrl() { return resimUrl; }
+    public void setResimUrl(String resimUrl) { this.resimUrl = resimUrl; }
 
-    public String getAciklama() {
-        return aciklama;
-    }
+    public String getYoutubeTakipci() { return youtubeTakipci; }
+    public void setYoutubeTakipci(String youtubeTakipci) { this.youtubeTakipci = youtubeTakipci; }
 
-    public void setAciklama(String aciklama) {
-        this.aciklama = aciklama;
-    }
+    public String getTwitterTakipci() { return twitterTakipci; }
+    public void setTwitterTakipci(String twitterTakipci) { this.twitterTakipci = twitterTakipci; }
 
-    public String getResimUrl() {
-        return resimUrl;
-    }
+    public String getInstagramTakipci() { return instagramTakipci; }
+    public void setInstagramTakipci(String instagramTakipci) { this.instagramTakipci = instagramTakipci; }
 
-    public void setResimUrl(String resimUrl) {
-        this.resimUrl = resimUrl;
-    }
+    public String getYoutube() { return youtube; }
+    public void setYoutube(String youtube) { this.youtube = youtube; }
 
-    public String getYoutubeTakipci() {
-        return youtubeTakipci;
-    }
+    public String getTwitter() { return twitter; }
+    public void setTwitter(String twitter) { this.twitter = twitter; }
 
-    public void setYoutubeTakipci(String youtubeTakipci) {
-        this.youtubeTakipci = youtubeTakipci;
-    }
-
-    public String getTiktokTakipci() {
-        return tiktokTakipci;
-    }
-
-    public void setTiktokTakipci(String tiktokTakipci) {
-        this.tiktokTakipci = tiktokTakipci;
-    }
-
-    public String getInstagramTakipci() {
-        return instagramTakipci;
-    }
-
-    public void setInstagramTakipci(String instagramTakipci) {
-        this.instagramTakipci = instagramTakipci;
-    }
+    public String getInstagram() { return instagram; }
+    public void setInstagram(String instagram) { this.instagram = instagram; }
 }
