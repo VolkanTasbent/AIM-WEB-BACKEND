@@ -15,8 +15,9 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "https://aim-web-frontend.vercel.app", // Frontend URL
-                                "http://localhost:3000"                // Lokal geliştirme için opsiyonel
+                                "https://aim-web-frontend.vercel.app",
+                                "https://aimagency.tr",
+                                "https://www.aimagency.tr"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
