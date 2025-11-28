@@ -29,6 +29,7 @@ public class AltServisService {
                     altServis.setBaslik(updated.getBaslik());
                     altServis.setAciklama(updated.getAciklama());
                     altServis.setAktif(updated.getAktif());
+                    altServis.setIkonUrl(updated.getIkonUrl());
                     return repository.save(altServis);
                 })
                 .orElse(null);
