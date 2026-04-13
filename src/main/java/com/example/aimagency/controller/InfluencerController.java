@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/influencers")
+@RequestMapping({"/api/influencers", "/influencers"})
 @CrossOrigin(origins = "*")
 public class InfluencerController {
 

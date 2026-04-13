@@ -11,7 +11,7 @@ import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/upload")
+@RequestMapping({"/api/upload", "/upload"})
 public class FileUploadController {
 
     @Autowired

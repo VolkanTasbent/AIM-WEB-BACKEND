@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/etkinlikler")
+@RequestMapping({"/api/etkinlikler", "/etkinlikler"})
 @CrossOrigin(origins = "*")
 public class EtkinlikController {
 

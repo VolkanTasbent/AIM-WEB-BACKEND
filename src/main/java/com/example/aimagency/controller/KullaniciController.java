@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/kullanicilar")
+@RequestMapping({"/api/kullanicilar", "/kullanicilar"})
 @CrossOrigin(origins = "*")
 public class KullaniciController {
 

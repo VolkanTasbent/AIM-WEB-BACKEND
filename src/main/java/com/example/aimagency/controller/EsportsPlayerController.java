@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/esports")
+@RequestMapping({"/api/esports", "/esports"})
 @CrossOrigin(origins = "*")
 public class EsportsPlayerController {
 
